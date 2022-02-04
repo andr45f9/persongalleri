@@ -15,15 +15,24 @@
       section {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      article {
+        border: 1px solid orange;
+        border-radius: 10px;
+        padding: 1rem;
       }
     </style>
   </head>
   <body>
     <section></section>
     <template>
-      <h2></h2>
-      <img src="" alt="" />
-      <p></p>
+      <article>
+        <h2></h2>
+        <img src="" alt="" />
+        <p></p>
+      </article>
     </template>
 
     <script>
