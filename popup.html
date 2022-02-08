@@ -35,8 +35,31 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 213, 134, 0.623);
+        background-color: rgba(255, 213, 134, 0.733);
         overflow: scroll;
+      }
+
+      #luk_knap {
+        position: fixed;
+        padding: 0.3rem 0.6rem 0.2rem 0.6rem;
+        margin: 0.7rem 0 0 0.7rem;
+        border-radius: 10px;
+        font-size: 2rem;
+        font-weight: bolder;
+        color: whitesmoke;
+        background-color: orange;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+      }
+
+      #popup article {
+      max-width: 60%;
+      margin: 1rem auto;
+      border-radius: 25px;
+      padding: 12px;
+      background-color: whitesmoke;
+      text-align: center;
       }
     </style>
   </head>
@@ -57,7 +80,14 @@
         <p></p>
       </article>
     </template>
-    <section id="popup"></section>
+    <section id="popup">
+      <div id="luk_knap">&#x2715</div>
+      <article>
+        <h2>Navn: <span class="popup_h2"></span></h2>
+        <img src="" alt="" />
+        <p>Email: <span class="popup_p"></span></p>
+      </article>
+    </section>
 
     <script>
       const container = document.querySelector("section");
@@ -107,10 +137,24 @@
             klon.querySelector("h2").textContent = person.fornavn;
             klon.querySelector("img").src = "faces/" + person.profilbillede;
             klon.querySelector("p").textContent = person.email;
+            klon.querySelector("article").addEventListener("click", () => visDetaljer(person))
             container.appendChild(klon);
           }
         });
       }
+
+
+
+      function visDetaljer(person) {
+      console.log(person)
+            popup.style.display = "block";
+            popup.querySelector(".popup_h2").textContent = person.fornavn;
+            popup.querySelector("img").src = "faces/" + person.profilbillede;
+            popup.querySelector(".popup_p").textContent = person.email;
+
+       document.querySelector("#luk_knap").addEventListener("click" , () => popup.style.display = "none");     
+      }
+      
 
       hentData();
     </script>
